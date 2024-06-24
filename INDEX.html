@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscripción</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('images/image2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .logo {
+            max-width: 100px;
+            margin: 0 auto 20px;
+        }
+        .additional-image {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // Verificar si hay una sesión iniciada
+    if (!localStorage.getItem('username')) {
+        window.location.href = 'login.html';
+    }
+</script>
+<div class="container">
+    <img src="images/LOGOCDC.png" alt="Logo" class="logo">
+    <h2>Formulario de Inscripción</h2>
+    <form id="registrationForm" action="https://script.google.com/macros/s/AKfycbwf1tA14DIiu65hhWVd3O7OQxpf0SKxhvDPhsA9vprp-Ej-dL4l6CDCQzYC0Bq4CTxnlA/exec" method="get">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="dpi">DPI:</label>
+            <input type="text" id="dpi" name="dpi" required>
+        </div>
+        <div class="form-group">
+            <label for="alto">Alto (cm):</label>
+            <input type="number" id="alto" name="alto" required>
+        </div>
+        <div class="form-group">
+            <label for="codigo_turno">Código del turno:</label>
+            <input type="text" id="codigo_turno" name="codigo_turno" required>
+        </div>
+        <div class="form-group">
+            <label for="cortejo">cortejo:</label>
+            <select id="cortejo" name="cortejo" required>
+                <option value="">Seleccione una opción</option>
+                <option value="viernes_santo">Viernes Santo</option>
+                <option value="segundo_domingo">Segundo Domingo</option>
+                <option value="miercoles_ceniza">Miércoles de Ceniza</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="celular">Número de Celular:</label>
+            <input type="text" id="celular" name="celular" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const url = form.action + '?' + new URLSearchParams(new FormData(form)).toString();
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                if (data === "Success") {
+                    window.location.href = "gracias.html";
+                } else {
+                    alert("Hubo un error al enviar el formulario. Por favor, inténtelo de nuevo.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Hubo un error al enviar el formulario. Por favor, inténtelo de nuevo.");
+            });
+    });
+</script>
+
+</body>
+</html>

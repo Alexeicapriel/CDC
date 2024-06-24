@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias por Actualizar los Datos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('images/image4.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container p {
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>¡Gracias por Actualizar tus Datos!</h2>
+    <p>Te agradecemos sinceramente por tomarte el tiempo de llenar nuestro formulario. Tu participación es muy valiosa para nosotros y nos ayuda a mejorar nuestros servicios.</p>
+    <p>Queremos informarte que los datos que proporcionaste serán utilizados para actualizar nuestra base de datos y asegurar que contemos con la información más precisa y actualizada.</p>
+    <p>¡Gracias nuevamente por tu colaboración!</p>
+    <button class="button" onclick="logout()">Volver al Inicio</button>
+</div>
+
+<script>
+    function logout() {
+        localStorage.removeItem('username'); // Eliminar la sesión
+        window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+    }
+</script>
+
+</body>
+</html>
